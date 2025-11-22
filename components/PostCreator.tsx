@@ -29,9 +29,9 @@ const PostCreator: React.FC<PostCreatorProps> = ({ audience }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 h-full flex flex-col">
-      <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-        <span className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 h-full flex flex-col transition-colors duration-300">
+      <h2 className="text-xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+        <span className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg">
           <Send className="w-5 h-5" />
         </span>
         LinkedIn Post Creator
@@ -39,19 +39,19 @@ const PostCreator: React.FC<PostCreatorProps> = ({ audience }) => {
 
       <div className="space-y-4 flex-grow">
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-1">
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
             What's on your mind?
           </label>
           <textarea
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             placeholder={audience === 'student' ? "E.g., Just finished my Python project..." : "E.g., Networking strategies for Q4..."}
-            className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none h-24 resize-none"
+            className="w-full p-3 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none h-24 resize-none placeholder-slate-400 dark:placeholder-slate-500"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">Tone</label>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Tone</label>
           <div className="flex gap-2">
             {(['professional', 'casual', 'excited'] as const).map((t) => (
               <button
@@ -60,7 +60,7 @@ const PostCreator: React.FC<PostCreatorProps> = ({ audience }) => {
                 className={`px-3 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
                   tone === t 
                     ? 'bg-brand-600 text-white' 
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
                 }`}
               >
                 {t}
@@ -81,15 +81,15 @@ const PostCreator: React.FC<PostCreatorProps> = ({ audience }) => {
         {generatedPost && (
           <div className="mt-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-sm font-semibold text-slate-900">Preview</h3>
+              <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Preview</h3>
               <button 
                 onClick={handleCopy}
-                className="text-slate-500 hover:text-brand-600 transition-colors"
+                className="text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
               >
                 {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
-            <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-slate-700 text-sm whitespace-pre-wrap font-sans leading-relaxed">
+            <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm whitespace-pre-wrap font-sans leading-relaxed">
               {generatedPost}
             </div>
           </div>

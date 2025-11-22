@@ -55,14 +55,14 @@ const ProfessionalView: React.FC = () => {
         
         <VoiceAssistant onDataParsed={handleVoiceData} />
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col h-[600px]">
-          <div className="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col h-[600px] transition-colors duration-300">
+          <div className="p-5 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
             <div>
-              <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-                <Users className="w-5 h-5 text-brand-600" />
+              <h2 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                <Users className="w-5 h-5 text-brand-600 dark:text-brand-400" />
                 Connections
               </h2>
-              <p className="text-sm text-slate-500">Track your network</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Track your network</p>
             </div>
             <button
               onClick={() => addConnection({})}
@@ -75,27 +75,27 @@ const ProfessionalView: React.FC = () => {
 
           <div className="overflow-y-auto flex-1 p-4 space-y-3">
             {connections.length === 0 ? (
-               <div className="h-full flex flex-col items-center justify-center text-slate-400">
+               <div className="h-full flex flex-col items-center justify-center text-slate-400 dark:text-slate-500">
                 <Users className="w-12 h-12 mb-2 opacity-20" />
                 <p>No connections tracked yet.</p>
               </div>
             ) : (
               connections.map((conn) => (
-                <div key={conn.id} className="group bg-white border border-slate-200 p-4 rounded-lg hover:shadow-md transition-all duration-200 hover:border-brand-300">
+                <div key={conn.id} className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4 rounded-lg hover:shadow-md transition-all duration-200 hover:border-brand-300 dark:hover:border-brand-500">
                   <div className="flex justify-between items-start">
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-lg">
+                      <div className="w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold text-lg">
                         {conn.name.charAt(0)}
                       </div>
                       <div>
-                        <h3 className="font-bold text-slate-900">{conn.name}</h3>
-                        <p className="text-sm text-slate-600">{conn.role} @ {conn.company}</p>
+                        <h3 className="font-bold text-slate-900 dark:text-white">{conn.name}</h3>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">{conn.role} @ {conn.company}</p>
                       </div>
                     </div>
                     <div className="flex gap-2">
                       <button 
                         onClick={() => setEditingConnection(conn)}
-                        className="text-slate-300 group-hover:text-brand-600 transition-colors"
+                        className="text-slate-300 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors"
                         title="Edit"
                       >
                         <Edit2 className="w-4 h-4" />
@@ -110,7 +110,7 @@ const ProfessionalView: React.FC = () => {
                     </div>
                   </div>
                   
-                  <div className="mt-4 flex flex-wrap gap-4 text-sm text-slate-500">
+                  <div className="mt-4 flex flex-wrap gap-4 text-sm text-slate-500 dark:text-slate-400">
                     {conn.email && (
                       <div className="flex items-center gap-1.5">
                         <Mail className="w-3 h-3" />
@@ -122,7 +122,7 @@ const ProfessionalView: React.FC = () => {
                       Added: {conn.dateAdded}
                     </div>
                     {conn.status && (
-                      <div className="flex items-center gap-1.5 text-brand-600 font-medium">
+                      <div className="flex items-center gap-1.5 text-brand-600 dark:text-brand-400 font-medium">
                         <Activity className="w-3 h-3" />
                         {conn.status}
                       </div>
@@ -130,7 +130,7 @@ const ProfessionalView: React.FC = () => {
                   </div>
                   
                   {conn.notes && (
-                    <div className="mt-3 p-2 bg-slate-50 rounded text-xs text-slate-600 italic border border-slate-100">
+                    <div className="mt-3 p-2 bg-slate-50 dark:bg-slate-900/50 rounded text-xs text-slate-600 dark:text-slate-300 italic border border-slate-100 dark:border-slate-700">
                       "{conn.notes}"
                     </div>
                   )}
@@ -168,79 +168,79 @@ const EditConnectionModal: React.FC<{
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200">
-        <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-          <h3 className="font-bold text-slate-800 flex items-center gap-2">
-            <Edit2 className="w-4 h-4 text-brand-600" />
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200">
+        <div className="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
+          <h3 className="font-bold text-slate-800 dark:text-white flex items-center gap-2">
+            <Edit2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
             Edit Connection
           </h3>
-          <button onClick={onCancel} className="text-slate-400 hover:text-slate-600 transition-colors">
+          <button onClick={onCancel} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
             <X className="w-5 h-5" />
           </button>
         </div>
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Name</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Name</label>
             <input 
               type="text" 
               value={formData.name} 
               onChange={(e) => setFormData({...formData, name: e.target.value})}
-              className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none"
+              className="w-full p-2 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Role</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Role</label>
               <input 
                 type="text" 
                 value={formData.role} 
                 onChange={(e) => setFormData({...formData, role: e.target.value})}
-                className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Company</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Company</label>
               <input 
                 type="text" 
                 value={formData.company} 
                 onChange={(e) => setFormData({...formData, company: e.target.value})}
-                className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 outline-none"
               />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-               <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
                <input 
                  type="email" 
                  value={formData.email} 
                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                 className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none"
+                 className="w-full p-2 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 outline-none"
                />
             </div>
             <div>
-               <label className="block text-sm font-medium text-slate-700 mb-1">Status</label>
+               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Status</label>
                <input 
                  type="text" 
                  value={formData.status || ''} 
                  onChange={(e) => setFormData({...formData, status: e.target.value})}
-                 className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none"
+                 className="w-full p-2 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 outline-none"
                  placeholder="e.g. Met for Coffee"
                />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Notes</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Notes</label>
             <textarea 
               value={formData.notes} 
               onChange={(e) => setFormData({...formData, notes: e.target.value})}
-              className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none h-24 resize-none"
+              className="w-full p-2 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 outline-none h-24 resize-none"
             />
           </div>
           <div className="flex justify-end gap-3 pt-2">
             <button 
               onClick={onCancel}
-              className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg font-medium transition-colors"
+              className="px-4 py-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg font-medium transition-colors"
             >
               Cancel
             </button>

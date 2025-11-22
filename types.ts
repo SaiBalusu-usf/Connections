@@ -25,6 +25,14 @@ export interface GeneratedPost {
   hashtags: string[];
 }
 
+// Added TeamMember interface required by TeamModal
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio?: string;
+}
+
 // Voice Assistant Types
 export interface VoiceParseResult {
   type: 'job' | 'connection' | 'unknown';
