@@ -1,0 +1,7 @@
+{
+  "name": "Connections - Career & Network Manager",
+  "description": "A comprehensive tool for Students and Professionals to track jobs, manage connections, and generate LinkedIn posts using AI.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
