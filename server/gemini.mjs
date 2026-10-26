@@ -48,7 +48,7 @@ async function generateContent(body, apiKey) {
 }
 
 // A single-user local boundary, not a public authenticated API.
-export function createGeminiMiddleware({ apiKey, generate = generateContent, now = Date.now } = {}) {
+export function createGeminiMiddleware({ apiKey = '', generate = generateContent, now = Date.now } = {}) {
   let requests = [];
   let active = 0;
   return async (req, res, next) => {
